@@ -1,1 +1,23 @@
-{{outlet}}
+<h1>Send Money</h1>
+
+<label>To:</label>
+{{input type="text" value=payee size="50"}}
+
+<label>Amount:</label>
+{{input type="text" value=amount}}
+
+<label>Message (optional):</label>
+{{textarea value=message cols="80" rows="6"}}
+
+<label>What's this payment for?</label>
+<select name="paymentReason">
+  {{#each reason in paymentReasons}}
+    <option value={{reason.code}}>{{reason.text}}</option>
+  {{/each}}
+</select>
+
+{{!--        
+content=paymentReasons
+optionValuePath="content.reasonCode"
+optionLabelPath="content.reasonText"
+ --}}
