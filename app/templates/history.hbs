@@ -1,0 +1,11 @@
+<h1>Transaction History</h1>
+
+{{#each model as |transaction|}}
+  <div id="transaction">
+    <span id="date">{{transaction.date}}</span>
+    <span id="payee">{{transaction.payee}}</span>
+    <span id="amount">{{transaction.amount}}</span>
+  </div>
+{{/each}}
+
+{{#link-to "index"}}Home{{/link-to}}
