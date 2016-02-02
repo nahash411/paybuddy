@@ -5,7 +5,7 @@
     </tr>
   </thead>
   {{#each model as |transactionUnit|}}
-    {{transaction-listing transaction=transactionUnit}}
+    {{transaction-listing transaction=transactionUnit.attributes}}
   {{/each}}
 </table>
 
