@@ -7,8 +7,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-var transactionJSON = {};
-
 var transactionUnits = [];
 
 for (var i = 1; i <= 300; i++) {
@@ -24,11 +22,33 @@ for (var i = 1; i <= 300; i++) {
   transactionUnits.push(transaction);
 }
 
-transactionJSON['transactions'] = transactionUnits;
-
 app.get('/api/transactions', function (req, res) {
-  console.log(req.query);
+
+  var page_start = 0;
+  var page_length = +req.query.per_page;
+  var page_end;
+  var total_pages = transactionUnits.length / page_length;
+
+  if (req.query.page !== '1') {
+    page_start = (req.query.page * page_length) - 1;
+  }
+
+  page_end = page_start + page_length;
+
+  if (transactionUnits.length % page_length !== 0) {
+    total_pages++;
+  }
+
+  var transactionJSON = {
+    transactions: transactionUnits.slice(page_start, page_end),
+    meta: {
+      total_pages: total_pages
+    }
+  };
+
   res.json(transactionJSON);
 });
 
-app.listen(3000);
+app.listen(3000, function () {
+  console.log('Listening on port 3000...');
+});

@@ -4,11 +4,15 @@
       <td>Transaction History</td>
     </tr>
   </thead>
-{{!--   {{#each model as |transactionUnit|}}
-    {{transaction-listing transaction=transactionUnit}}
-  {{/each}} --}}
-  {{infinity-loader infinityModel=model}}
+  {{#each model as |transaction|}}
+    <tr>
+      <td>{{moment-format transaction.date}}</td>
+      <td>{{transaction.payee}}</td>
+      <td>{{transaction.amount}}</td>
+    </tr>
+  {{/each}}
 </table>
 
+{{infinity-loader infinityModel=model}}
 
 {{#link-to "index" tagName="button"}}Home{{/link-to}}
