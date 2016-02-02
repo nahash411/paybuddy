@@ -7,27 +7,28 @@ app.use(function(req, res, next) {
   next();
 });
 
-var transactions = [];
+var transactionJSON = {};
+
+var transactionUnits = [];
 
 for (var i = 1; i <= 300; i++) {
   var transaction = {
-    type: 'transaction',
     id: i,
-    attributes: {
-      date: new Date('2/1/2016') - (i * 86400000),
-      payee: 'ceverett@gmail.com',
-      amount: 30,
-      currency: 'USD',
-      message: '',
-      reason: 'FF'
-    }
+    date: new Date('2/1/2016') - (i * 86400000),
+    payee: 'ceverett@gmail.com',
+    amount: 30,
+    currency: 'USD',
+    message: '',
+    reason: 'FF'
   };
-  transactions.push(transaction);
+  transactionUnits.push(transaction);
 }
 
+transactionJSON['transactions'] = transactionUnits;
+
 app.get('/api/transactions', function (req, res) {
-  console.log('Successful GET');
-  res.json(transactions);
+  console.log(req.query);
+  res.json(transactionJSON);
 });
 
 app.listen(3000);

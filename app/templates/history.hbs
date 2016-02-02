@@ -4,9 +4,11 @@
       <td>Transaction History</td>
     </tr>
   </thead>
-  {{#each model as |transactionUnit|}}
-    {{transaction-listing transaction=transactionUnit.attributes}}
-  {{/each}}
+{{!--   {{#each model as |transactionUnit|}}
+    {{transaction-listing transaction=transactionUnit}}
+  {{/each}} --}}
+  {{infinity-loader infinityModel=model}}
 </table>
+
 
 {{#link-to "index" tagName="button"}}Home{{/link-to}}
