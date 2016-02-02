@@ -1,7 +1,12 @@
-<h1>Transaction History</h1>
+<table>
+  <thead>
+    <tr>
+      <td>Transaction History</td>
+    </tr>
+  </thead>
+  {{#each model as |transactionUnit|}}
+    {{transaction-listing transaction=transactionUnit}}
+  {{/each}}
+</table>
 
-{{#each model as |transactionUnit|}}
-  {{transaction-listing transaction=transactionUnit}}
-{{/each}}
-
-{{#link-to "index"}}Home{{/link-to}}
+{{#link-to "index" tagName="button"}}Home{{/link-to}}
