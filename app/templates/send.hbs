@@ -5,25 +5,20 @@
       <label>To:</label>
       {{input type="email" value=payee size="50" placeholder="Enter a valid email address" required=true}}
 
-      <div class="row">
-        <div class="four-fifth">
-          <label>Amount:</label>
-          {{input type="text" value=amount}}
-        </div>
-        <div>
+      <div>
+        <label>Amount:</label>{{input type="text" value=amount placeholder=selectedCurrencySymbol focus-out="formatAmount"}}
 {{!--     {{view "select" 
-              content=currencies
-              optionValuePath="content.label"
-              optionLabelPath="content.label"
-              value=selectedCurrency.label
-              selectionBinding=selectedCurrency.label
-          }} --}}
-          {{#x-select action='changeSelectedCurrency'}}
-            {{#each-in currencies as |currency symbol|}}
-              {{#x-option value=currency}}{{currency}}{{/x-option}}
-            {{/each-in}}
-          {{/x-select}}
-        </div>
+            content=currencies
+            optionValuePath="content.label"
+            optionLabelPath="content.label"
+            value=selectedCurrency.label
+            selectionBinding=selectedCurrency.label
+        }} --}}
+        {{#x-select action='changeSelectedCurrency'}}
+          {{#each-in currencies as |currency symbol|}}
+            {{#x-option value=currency}}{{currency}}{{/x-option}}
+          {{/each-in}}
+        {{/x-select}}
       </div>
 
       <label>Message (optional):</label>

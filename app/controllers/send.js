@@ -6,9 +6,17 @@ export default Ember.Controller.extend({
   amount: '',
 
   actions: {
+    formatAmount: function () {
+      var amt = this.get('amount');
+      var regex = new RegExp(/^[1-9]/);
+      if (regex.test(amt)) {
+        this.set('amount', (Number(amt).toLocaleString('en-US', {style: 'currency', currency: this.get('selectedCurrency')})));
+      }
+    },
     changeSelectedCurrency: function (value, component) {
-      this.set('selectedCurrency.label', value)
-      console.log(this.get('selectedCurrency.label'));
+      this.set('selectedCurrency', value)
+      this.set('selectedCurrencySymbol', this.currencies[value]);
+      console.log(this.get('selectedCurrencySymbol') + ' ' + this.get('amount'));
     }
   },
 
@@ -23,9 +31,8 @@ export default Ember.Controller.extend({
     }
   ],
 
-  selectedCurrency: {
-    label: 'GBP'
-  },
+  selectedCurrency: 'USD',
+  selectedCurrencySymbol: '$',
 
   currencies: {
     'USD': '$',
