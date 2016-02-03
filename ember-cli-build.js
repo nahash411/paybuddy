@@ -7,8 +7,9 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  app.import("bower_components/picnic/releases/picnic.min.css");
-
+  //app.import("bower_components/picnic/releases/picnic.min.css");
+  app.import('vendor/skeleton/normalize.css');
+  app.import('vendor/skeleton/skeleton.css');
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

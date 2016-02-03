@@ -1,3 +1,42 @@
-{{payment-form}}
+<div>
+  <article class="card">
+    <h1>Send Money</h1>
+    <section>
+      <label>To:</label>
+      {{input type="email" value=payee size="50" placeholder="Enter a valid email address" required=true}}
+
+      <div class="row">
+        <div class="four-fifth">
+          <label>Amount:</label>
+          {{input type="text" value=amount}}
+        </div>
+        <div>
+{{!--     {{view "select" 
+              content=currencies
+              optionValuePath="content.label"
+              optionLabelPath="content.label"
+              value=selectedCurrency.label
+              selectionBinding=selectedCurrency.label
+          }} --}}
+          {{#x-select action='changeSelectedCurrency'}}
+            {{#each-in currencies as |currency symbol|}}
+              {{#x-option value=currency}}{{currency}}{{/x-option}}
+            {{/each-in}}
+          {{/x-select}}
+        </div>
+      </div>
+
+      <label>Message (optional):</label>
+      {{textarea value=message cols="80" rows="6"}}
+
+      <label>What's this payment for?</label>
+      {{view "select"
+          content=paymentReasons
+          optionValuePath="content.code"
+          optionLabelPath="content.text"
+      }}
+    </section>
+  </article>  
+</div>
 
 {{#link-to "index" tagName="button"}}Home{{/link-to}}

@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+
+  changeCurrency(currency) {
+    console.log(currency);
+  },
+
   paymentReasons: [
     {
       code: 'FF',
