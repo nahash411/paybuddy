@@ -6,6 +6,12 @@ export default Ember.Controller.extend({
   amount: '',
 
   actions: {
+    validateEmail: function () {
+      var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!regex.test(this.get('payee'))) {
+        console.log('not a valid email')
+      }
+    },
     formatAmount: function () {
       var amt = this.get('amount');
       var regex = new RegExp(/^[1-9]/);

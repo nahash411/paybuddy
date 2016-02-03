@@ -1,37 +1,38 @@
 <div>
-  <article class="card">
-    <h1>Send Money</h1>
-    <section>
-      <label>To:</label>
-      {{input type="email" value=payee size="50" placeholder="Enter a valid email address" required=true}}
 
-      <div>
-        <label>Amount:</label>{{input type="text" value=amount placeholder=selectedCurrencySymbol focus-out="formatAmount"}}
-{{!--     {{view "select" 
-            content=currencies
-            optionValuePath="content.label"
-            optionLabelPath="content.label"
-            value=selectedCurrency.label
-            selectionBinding=selectedCurrency.label
-        }} --}}
-        {{#x-select action='changeSelectedCurrency'}}
-          {{#each-in currencies as |currency symbol|}}
-            {{#x-option value=currency}}{{currency}}{{/x-option}}
-          {{/each-in}}
-        {{/x-select}}
-      </div>
+  <h1>Send Money</h1>
 
-      <label>Message (optional):</label>
-      {{textarea value=message cols="80" rows="6"}}
+  <div>
+    <label>To:</label>
+    {{input type="email" value=payee size="50" placeholder="Enter a valid email address" required=true}} 
+  </div>
 
-      <label>What's this payment for?</label>
-      {{view "select"
-          content=paymentReasons
-          optionValuePath="content.code"
-          optionLabelPath="content.text"
-      }}
-    </section>
-  </article>  
+  <div>
+    <label>Amount:</label>
+    {{input type="text" value=amount placeholder=selectedCurrencySymbol focus-out="formatAmount"}}
+
+    {{#x-select action='changeSelectedCurrency'}}
+      {{#each-in currencies as |currency symbol|}}
+        {{#x-option value=currency}}{{currency}}{{/x-option}}
+      {{/each-in}}
+    {{/x-select}}
+  </div>
+
+  <div>
+    <label>Message (optional):</label>
+    {{textarea value=message cols="80" rows="6"}}
+  </div>
+
+  <div>
+    <label>What's this payment for?</label>
+    {{view "select"
+        content=paymentReasons
+        optionValuePath="content.code"
+        optionLabelPath="content.text"
+    }}
+  </div>
+
 </div>
 
 {{#link-to "index" tagName="button"}}Home{{/link-to}}
+{{#link-to "history" tagName="button"}}Send{{/link-to}}
