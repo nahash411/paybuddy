@@ -4,13 +4,18 @@ export default Ember.Controller.extend({
 
   payee: '',
   amount: '',
+  isLoading: false,
 
   actions: {
-    validateEmail: function () {
-      var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!regex.test(this.get('payee'))) {
-        console.log('not a valid email')
+    sendData:function(){
+      var self = this;
+      if(!self.get('isLoading')){
+        self.set('isLoading', true);
       }
+      Ember.run.later(function(){
+        self.set('isLoading', false);
+        self.transitionTo('success');
+      }, 1000);
     },
     formatAmount: function () {
       var amt = this.get('amount');

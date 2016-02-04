@@ -1,5 +1,9 @@
 <div>
 
+  <div class="loading">
+    
+  </div>
+
   <h1>Send Money</h1>
 
   <div>
@@ -35,4 +39,11 @@
 </div>
 
 {{#link-to "index" tagName="button"}}Home{{/link-to}}
-{{#link-to "history" tagName="button"}}Send{{/link-to}}
+{{#link-to "success" tagName="button" action="startLoading"}}Send{{/link-to}}
+{{!-- <button {{action 'sendData'}}>
+  {{#if isLoading}}
+      <img src="http://i639.photobucket.com/albums/uu116/pksjce/spiffygif_18x18.gif" />
+  {{else}}
+      Send
+  {{/if}}
+</button> --}}
