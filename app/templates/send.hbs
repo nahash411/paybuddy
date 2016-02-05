@@ -15,7 +15,7 @@
     <label>Amount:</label>
     {{input type="text" value=amount placeholder=selectedCurrencySymbol pattern="[^-].*" focus-out="formatAmount"}}
 
-    {{#x-select action='changeSelectedCurrency'}}
+    {{#x-select value=selectedCurrency action='changeSelectedCurrency'}}
       {{#each-in currencies as |currency symbol|}}
         {{#x-option value=currency}}{{currency}}{{/x-option}}
       {{/each-in}}

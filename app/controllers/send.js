@@ -33,7 +33,6 @@ export default Ember.Controller.extend({
     changeSelectedCurrency(value, component) {
       this.set('selectedCurrency', value)
       this.set('selectedCurrencySymbol', this.currencies[value]);
-      console.log(this.get('selectedCurrencySymbol') + ' ' + this.get('amount'));
     }
   },
 
