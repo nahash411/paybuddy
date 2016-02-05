@@ -4,10 +4,16 @@ export default Ember.Controller.extend({
 
   payee: '',
   amount: '',
+  message: '',
   isLoading: false,
 
   actions: {
-    sendData:function(){
+    clearForm() {
+      this.set('payee', '');
+      this.set('amount', '');
+      this.set('message', '');
+    },
+    sendData(){
       var self = this;
       if(!self.get('isLoading')){
         self.set('isLoading', true);
@@ -17,14 +23,14 @@ export default Ember.Controller.extend({
         self.transitionTo('success');
       }, 1000);
     },
-    formatAmount: function () {
+    formatAmount() {
       var amt = this.get('amount');
       var regex = new RegExp(/^[1-9]/);
       if (regex.test(amt)) {
         this.set('amount', (Number(amt).toLocaleString('en-US', {style: 'currency', currency: this.get('selectedCurrency')})));
       }
     },
-    changeSelectedCurrency: function (value, component) {
+    changeSelectedCurrency(value, component) {
       this.set('selectedCurrency', value)
       this.set('selectedCurrencySymbol', this.currencies[value]);
       console.log(this.get('selectedCurrencySymbol') + ' ' + this.get('amount'));

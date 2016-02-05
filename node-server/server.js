@@ -14,7 +14,7 @@ for (var i = 1; i <= 300; i++) {
     id: i,
     date: new Date('2/1/2016') - (i * 86400000),
     payee: 'ceverett@gmail.com',
-    amount: 30,
+    amount: '$30.00',
     currency: 'USD',
     message: '',
     reason: 'FF'
